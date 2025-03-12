@@ -1,0 +1,341 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant Menu</title>
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(to bottom, #7B886B 75%, white 25%); /* Brown color for the whole body */
+}
+h1, nav ul li a {
+    color: white !important; /* Ensures the text remains white */
+}
+/* Split the page into two parts */
+.top-section {
+    background-color: #6F4F1F; /* Brown color */
+    padding: 20px 0;
+    color: white; /* Text color for better readability */
+}
+
+.bottom-section {
+    background-color: white; /* White color for the bottom */
+    padding: 20px 0;
+}
+
+/* Text color for sections */
+h1, h2, h3 {
+    text-align: center;
+    color: white !important;; /* Black color for text */
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    text-align: center;
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 10px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+}
+
+/* Menu Grid Layout */
+.menu-grid {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    padding: 20px;
+}
+
+.menu-item {
+    opacity: 0;
+    transform: translateX(100px); /* Start off to the right */
+    animation: showImage 2s forwards;
+    margin: 0 10px;
+    width: 200px;
+    text-align: center;
+    transition: transform 0.5s ease-out, opacity 0.5s ease-out;
+}
+
+.menu-item img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    cursor: pointer; /* Make the images clickable */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Hover Effect: Make the image stand out */
+.menu-item img:hover {
+    transform: scale(1.05); /* Scale the image slightly */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Add shadow */
+}
+
+.menu-details {
+    padding: 10px;
+}
+
+.menu-details h3 {
+    font-size: 18px;
+    margin: 10px 0;
+}
+
+.menu-details p {
+    color: #555;
+    font-size: 14px;
+}
+
+/* Animation for menu items */
+@keyframes showImage {
+    0% {
+        opacity: 0;
+        transform: translateX(100px); /* Move right to left */
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0); /* Move to the default position */
+    }
+}
+
+/* Sequential animation delay */
+.menu-item:nth-child(1) {
+    animation-delay: 0s;
+}
+.menu-item:nth-child(2) {
+    animation-delay: 2s;
+}
+.menu-item:nth-child(3) {
+    animation-delay: 4s;
+}
+.menu-item:nth-child(4) {
+    animation-delay: 6s;
+}
+.menu-item:nth-child(5) {
+    animation-delay: 8s;
+}
+.menu-item:nth-child(6) {
+    animation-delay: 10s;
+}
+.menu-item:nth-child(7) {
+    animation-delay: 12s;
+}
+.menu-item:nth-child(8) {
+    animation-delay: 14s;
+}
+.menu-item:nth-child(9) {
+    animation-delay: 16s;
+}
+.menu-item:nth-child(10) {
+    animation-delay: 18s;
+}
+
+/* Modal Style */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.7); /* Black w/ opacity */
+    padding-top: 60px;
+}
+
+.modal-content {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+}
+
+/* Modal Close Button */
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    margin-right: 15px;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #333;
+    color: white;
+}
+
+.social-icons a {
+    color: white;
+    margin: 0 10px;
+    text-decoration: none;
+}
+
+.social-icons a:hover {
+    color: #ddd;
+}
+
+/* Added icons styling */
+.social-media-divs {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.social-media-div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 120px;
+    height: 50px;
+    margin: 0 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    color: black; /* Text color set to black */
+    background-color: white; /* Background color set to white */
+    border: 1px solid black; /* Add border to distinguish the divs */
+}
+
+/* WhatsApp color */
+.whatsapp, .facebook, .instagram, .local {
+    background-color: transparent; /* Make the background transparent */
+    border-width: 2px; /* Keep the border visible */
+    border-style: solid;
+    color: white; /* Ensure text remains visible */
+}
+    </style>
+</head>
+<body>
+    <header style="text-align: center; padding: 20px;">
+    <img src="logo.png" alt="Hamza Food Logo" style="width: 200px; height: auto; margin-bottom: 0px;">
+</header>
+    <header>
+        <nav>
+                <h1 style="margin: 0px 0; font-size: 35px;">Hamza Food</h1>
+            <ul>
+                <li><a href="#menu" style="color: white; margin: 5px 0; font-size: 30px;">عمر السطيلة ديالك بيديك إبتداء من 15 درهم</a></li>
+            </ul>
+            <!-- Social Media Divs -->
+            <div class="social-media-divs" style="display: flex; justify-content: center; gap: 10px; margin-top: 5px;">
+                <div class="social-media-div whatsapp" onclick="window.location.href='https://wa.me/212676220003'" style="padding: 5px 10px; font-size: 14px;">
+                    WhatsApp
+                </div>
+                <div class="social-media-div facebook" onclick="window.location.href='https://www.facebook.com/share/1B6sfLEwpE/'" style="padding: 5px 10px; font-size: 14px;">
+                    Facebook
+                </div>
+                <div class="social-media-div instagram" onclick="window.location.href='https://www.instagram.com/hamzafood2024?utm_source=qr&igsh=cTV5NTNod2Znbno3'" style="padding: 5px 10px; font-size: 14px;">
+                    Instagram
+                </div>
+                <div class="social-media-div local" onclick="window.location.href='https://maps.app.goo.gl/Z3K7tmjFZwLgP4hh8'" style="padding: 5px 10px; font-size: 14px;">
+                    Location
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <section id="menu">
+
+        <!-- Menu Items -->
+        <div class="menu-grid">
+            <div class="menu-item" onclick="showModal('pic 1.jpg')">
+                <img src="pic 1.jpg" alt="Tacos">
+            </div>
+
+            <div class="menu-item" onclick="showModal('pic 2.jpg')">
+                <img src="pic 2.jpg" alt="Bocadillos">
+            </div>
+
+            <div class="menu-item" onclick="showModal('pic 3.jpg')">
+                <img src="pic 3.jpg" alt="Pizza Margherita">
+            </div>
+
+            <div class="menu-item" onclick="showModal('pic 4.jpg')">
+                <img src="pic 4.jpg" alt="Sushi">
+            </div>
+
+            <div class="menu-item" onclick="showModal('pic 5.jpg')">
+                <img src="pic 5.jpg" alt="Burger">
+            </div>
+
+            <div class="menu-item" onclick="showModal('pic 6.jpg')">
+                <img src="pic 6.jpg" alt="Pasta">
+            </div>
+
+            <div class="menu-item" onclick="showModal('pic 7.jpg')">
+                <img src="pic 7.jpg" alt="Salad">
+            </div>
+
+            <div class="menu-item" onclick="showModal('pic 8.jpg')">
+                <img src="pic 8.jpg" alt="Steak">
+            </div>
+
+            <div class="menu-item" onclick="showModal('pic 9.jpg')">
+                <img src="pic 9.jpg" alt="Dessert">
+            </div>
+
+            <div class="menu-item" onclick="showModal('pic 10.jpg')">
+                <img src="pic 10.jpg" alt="Ice Cream">
+            </div>
+        </div>
+    </section>
+
+    <section id="about">
+
+    <section id="contact">
+    </section>
+
+    <!-- Modal for viewing the larger image -->
+    <div id="myModal" class="modal">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <img class="modal-content" id="modalImage" src="">
+    </div>
+
+    <script>
+        // Show the modal with the clicked image
+        function showModal(imageSrc) {
+            var modal = document.getElementById("myModal");
+            var modalImage = document.getElementById("modalImage");
+            modal.style.display = "block";
+            modalImage.src = imageSrc;
+        }
+
+        // Close the modal
+        function closeModal() {
+            var modal = document.getElementById("myModal");
+            modal.style.display = "none";
+        }
+
+        // Close modal if clicked anywhere outside of the modal content
+        window.onclick = function(event) {
+            var modal = document.getElementById("myModal");
+            if (event.target == modal) {
+                closeModal();
+            }
+        }
+    </script>
+</body>
+</html>

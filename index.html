@@ -11,31 +11,38 @@
             padding: 0;
             background: linear-gradient(to bottom, #7B886B 75%, white 25%);
         }
+
         h1, nav ul li a {
             color: white !important;
         }
+
         .top-section {
             background-color: #6F4F1F;
             padding: 20px 0;
             color: white;
         }
+
         .bottom-section {
             background-color: white;
             padding: 20px 0;
         }
+
         h1, h2, h3 {
             text-align: center;
             color: white !important;
         }
+
         nav ul {
             list-style-type: none;
             padding: 0;
             text-align: center;
         }
+
         nav ul li {
             display: inline;
             margin: 0 10px;
         }
+
         nav ul li a {
             text-decoration: none;
             color: #333;
@@ -50,18 +57,21 @@
             position: relative;
             width: 100%;
             padding: 20px;
+            flex-direction: column;
         }
 
         .image-container {
             position: relative;
-            width: 60%;
+            width: 90%; /* Set the width to 90% to scale with the screen */
+            max-width: 1200px; /* Max width for larger screens */
             text-align: center;
         }
 
         .main-image-container img {
             width: 100%;
-            height: 700px; /* Adjusted height for main image */
-            object-fit: cover; /* Maintain aspect ratio while covering the box */
+            height: auto;
+            max-height: 700px; /* Limit the height for better control */
+            object-fit: contain; /* Preserve aspect ratio while fitting in the container */
             border-radius: 8px;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
             cursor: pointer;
@@ -95,15 +105,17 @@
             justify-content: center;
             gap: 10px;
             margin-top: 20px;
+            flex-wrap: wrap;
         }
 
         .image-thumbnails img {
             width: 100px;
-            height: 75px; /* Adjusted height for thumbnails */
-            object-fit: cover; /* Maintain aspect ratio while covering the box */
+            height: 75px;
+            object-fit: cover;
             opacity: 0.6;
             transition: opacity 0.3s ease;
             cursor: pointer;
+            margin-bottom: 10px;
         }
 
         .image-thumbnails img:hover {
@@ -153,6 +165,31 @@
             border-width: 2px;
             border-style: solid;
             color: white;
+        }
+
+        /* Mobile responsiveness */
+        @media (max-width: 768px) {
+            .menu-grid {
+                flex-direction: column; /* Stack images vertically on small screens */
+            }
+
+            .main-image-container img {
+                max-height: 500px; /* Reduce height on small screens */
+            }
+
+            .image-thumbnails img {
+                width: 80px; /* Smaller thumbnails for mobile */
+                height: 60px;
+            }
+
+            .social-media-div {
+                width: 100px; /* Adjust button size on mobile */
+                font-size: 12px;
+            }
+
+            nav ul li a {
+                font-size: 20px; /* Smaller text on mobile */
+            }
         }
     </style>
 </head>
@@ -218,6 +255,7 @@
 
     <section id="contact">
     </section>
+
     <script>
         // Image gallery array
         const images = [
